@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="car" type="car"/>
+
+    <xs:element name="motorbike" type="motorbike"/>
+
+    <xs:element name="parameters" type="parameters"/>
+
+    <xs:element name="truck" type="truck"/>
+
+    <xs:element name="vehicle" type="vehicle"/>
+
+    <xs:complexType name="parameters">
+        <xs:sequence>
+            <xs:element name="length">
+                <xs:simpleType>
+                    <xs:restriction base="xs:double">
+                        <xs:minExclusive value="0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="vehicles" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element ref="car"/>
+                            <xs:element ref="motorbike"/>
+                            <xs:element ref="truck"/>
+                        </xs:choice>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="car">
+        <xs:complexContent>
+            <xs:extension base="vehicle">
+                <xs:sequence>
+                    <xs:element name="peopleCount" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:int">
+                                <xs:minInclusive value="0"/>
+                                <xs:maxInclusive value="4"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="vehicle" abstract="true">
+        <xs:sequence>
+            <xs:element name="name">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="speed">
+                <xs:simpleType>
+                    <xs:restriction base="xs:double">
+                        <xs:minExclusive value="0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="possibilityPuncture">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxExclusive value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="stopTime">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minExclusive value="0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="motorbike">
+        <xs:complexContent>
+            <xs:extension base="vehicle">
+                <xs:sequence>
+                    <xs:element name="sidecar" type="xs:boolean" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="truck">
+        <xs:complexContent>
+            <xs:extension base="vehicle">
+                <xs:sequence>
+                    <xs:element name="cargoWeight" minOccurs="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:double">
+                                <xs:minInclusive value="0"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
+

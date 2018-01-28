@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<parameters>
+    <length>350</length>
+    <vehicles>
+        <car>
+            <name>car1</name>
+            <speed>80</speed>
+            <possibilityPuncture>20</possibilityPuncture>
+            <stopTime>5</stopTime>
+            <peopleCount>2</peopleCount>
+        </car>
+        <car>
+            <name>car2</name>
+            <speed>100</speed>
+            <possibilityPuncture>10</possibilityPuncture>
+            <stopTime>3</stopTime>
+            <peopleCount>1</peopleCount>
+        </car>
+        <motorbike>
+            <name>moto2</name>
+            <speed>150</speed>
+            <possibilityPuncture>10</possibilityPuncture>
+            <stopTime>3</stopTime>
+            <sidecar>true</sidecar>
+        </motorbike>
+    </vehicles>
+   </parameters>
